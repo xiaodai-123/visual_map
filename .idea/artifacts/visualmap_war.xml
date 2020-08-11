@@ -1,0 +1,14 @@
+<component name="ArtifactManager">
+  <artifact type="war" name="visualmap:war">
+    <output-path>$PROJECT_DIR$/target</output-path>
+    <properties id="maven-jee-properties">
+      <options>
+        <module>visualmap</module>
+        <packaging>war</packaging>
+      </options>
+    </properties>
+    <root id="archive" name="xiaodai-visual-map.war">
+      <element id="artifact" artifact-name="visualmap:war exploded" />
+    </root>
+  </artifact>
+</component>

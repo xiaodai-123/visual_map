@@ -1,0 +1,187 @@
+<!doctype html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="initial-scale=1.0, user-scalable=no, width=device-width">
+    <title>Xi'an</title>
+    <link rel="stylesheet" href="https://a.amap.com/jsapi_demos/static/demo-center/css/demo-center.css"/>
+    <style>
+        html,
+        body,
+        #container {
+            margin: 0;
+            padding: 0;
+            width: 100%;
+            height: 100%;
+        }
+    </style>
+</head>
+<body>
+<div id="container"></div>
+<div class="input-card" style="width: auto;">
+    <div class="input-item">
+        <button class="btn" onclick="heatmap.show()">Show HeatMap</button>
+    </div>
+    <div class="input-item">
+        <button class="btn" onclick="heatmap.hide()">Close HeatMap</button>
+    </div>
+</div>
+<script src="//webapi.amap.com/maps?v=1.4.15&key=6d112e8538b93659bd168906ddcf47c8"></script>
+<script src="//a.amap.com/jsapi_demos/static/resource/heatmapData.js"></script>
+<script>
+    var map = new AMap.Map("container", {
+        resizeEnable: true,
+        center: [108.929799,34.259464],
+        lang :"en",
+        zoom: 11
+    });
+
+    var points =[
+        {"lng":108.929799,"lat":34.259464,"count":50},
+        {"lng":108.935988,"lat":34.16597,"count":50},
+        {"lng":109.006423,"lat":34.270854,"count":50},
+        {"lng":109.016143,"lat":34.25698,"count":50},
+        {"lng":108.964151,"lat":34.19819,"count":50},
+        {"lng":108.947287,"lat":34.272543,"count":50},
+        {"lng":108.935352,"lat":34.187904,"count":50},
+        {"lng":108.885017,"lat":34.245255,"count":50},
+        {"lng":108.925247,"lat":34.259997,"count":50},
+        {"lng":109.014337,"lat":34.267699,"count":50},
+        {"lng":108.988913,"lat":34.209209,"count":50},
+        {"lng":108.93299,"lat":34.269628,"count":50},
+        {"lng":108.93765,"lat":34.209096,"count":50},
+        {"lng":108.885129,"lat":34.245157,"count":50},
+        {"lng":108.935363,"lat":34.187908,"count":50},
+        {"lng":109.040318,"lat":34.274081,"count":50},
+        {"lng":108.885033,"lat":34.245188,"count":50},
+        {"lng":108.949474,"lat":34.234337,"count":50},
+        {"lng":108.949175,"lat":34.234572,"count":50},
+        {"lng":108.917546,"lat":34.259339,"count":50},
+        {"lng":109.014315,"lat":34.258041,"count":50},
+        {"lng":108.939186,"lat":34.225699,"count":50},
+        {"lng":109.049338,"lat":34.274938,"count":50},
+        {"lng":108.889173,"lat":34.225518,"count":50},
+        {"lng":108.997447,"lat":34.202997,"count":50},
+        {"lng":108.943376,"lat":34.269918,"count":50},
+        {"lng":108.921256,"lat":34.289892,"count":50},
+        {"lng":108.921569,"lat":34.28982,"count":50},
+        {"lng":108.935367,"lat":34.187915,"count":50},
+        {"lng":108.884434,"lat":34.245344,"count":50},
+        {"lng":108.884043,"lat":34.24542,"count":50},
+        {"lng":108.949476,"lat":34.234337,"count":50},
+        {"lng":108.923581,"lat":34.259545,"count":50},
+        {"lng":109.014309,"lat":34.264469,"count":50},
+        {"lng":108.937469,"lat":34.269751,"count":50},
+        {"lng":108.992183,"lat":34.207773,"count":50},
+
+
+        {"lng":108.880292,"lat":34.237288,"count":50},
+        {"lng":108.937811,"lat":34.30968,"count":50},
+        {"lng":108.935367,"lat":34.187913,"count":50},
+        {"lng":109.034539,"lat":34.272808,"count":50},
+        {"lng":108.882426,"lat":34.245549,"count":50},
+        {"lng":108.881554,"lat":34.225593,"count":50},
+        {"lng":108.939141,"lat":34.218693,"count":50},
+        {"lng":109.04487,"lat":34.274395,"count":50},
+        {"lng":108.949475,"lat":34.234338,"count":50},
+        {"lng":108.921962,"lat":34.2594,"count":50},
+        {"lng":108.886066,"lat":34.225557,"count":50},
+        {"lng":108.939155,"lat":34.22241,"count":50},
+        {"lng":109.046927,"lat":34.274909,"count":50},
+        {"lng":109.014296,"lat":34.261141,"count":50},
+        {"lng":108.994252,"lat":34.205219,"count":50},
+        {"lng":108.938251,"lat":34.269848,"count":50},
+        {"lng":108.921671,"lat":34.289843,"count":50},
+        {"lng":108.931821,"lat":34.206692,"count":50},
+
+        {"lng":108.921671,"lat":34.289843,"count":50},
+        {"lng":108.931821,"lat":34.206692,"count":50},
+        {"lng":108.884723,"lat":34.237177,"count":50},
+        {"lng":108.931714,"lat":34.206718,"count":50},
+        {"lng":108.937881,"lat":34.306111,"count":50},
+        {"lng":108.935364,"lat":34.187914,"count":50},
+        {"lng":108.880298,"lat":34.24528,"count":50},
+        {"lng":109.031728,"lat":34.272311,"count":50},
+        {"lng":108.880004,"lat":34.245261,"count":50},
+        {"lng":108.931592,"lat":34.206672,"count":50},
+        {"lng":108.931589,"lat":34.206659,"count":50},
+        {"lng":108.887478,"lat":34.237051,"count":50},
+        {"lng":108.938951,"lat":34.302916,"count":50},
+        {"lng":108.935344,"lat":34.187899,"count":50},
+        {"lng":109.02944,"lat":34.272034,"count":50},
+        {"lng":108.877126,"lat":34.24523,"count":50},
+        {"lng":109.051002,"lat":34.270051,"count":50},
+        {"lng":108.889615,"lat":34.241341,"count":50},
+
+        {"lng":108.939009,"lat":34.299673,"count":50},
+        {"lng":108.935366,"lat":34.187912,"count":50},
+        {"lng":109.022265,"lat":34.270818,"count":50},
+        {"lng":108.872215,"lat":34.247087,"count":50},
+        {"lng":108.949187,"lat":34.234586,"count":50},
+        {"lng":108.912125,"lat":34.259439,"count":50},
+        {"lng":109.014426,"lat":34.2551,"count":50},
+        {"lng":109.011429,"lat":34.267293,"count":50},
+        {"lng":109.01143,"lat":34.26729,"count":50},
+        {"lng":108.946923,"lat":34.269967,"count":50},
+        {"lng":108.931575,"lat":34.206653,"count":50},
+        {"lng":108.921653,"lat":34.289983,"count":50},
+        {"lng":108.999611,"lat":34.200111,"count":50},
+        {"lng":108.889361,"lat":34.237154,"count":50},
+        {"lng":108.93159,"lat":334.206666,"count":50},
+        {"lng":108.938906,"lat":34.301116,"count":50},
+        {"lng":108.873289,"lat":34.245221,"count":50},
+        {"lng":108.935361,"lat":34.18791,"count":50}
+    ];
+
+    if (!isSupportCanvas()) {
+        alert('热力图仅对支持canvas的浏览器适用,您所使用的浏览器不能使用热力图功能,请换个浏览器试试~')
+    }
+
+    //详细的参数,可以查看heatmap.js的文档 http://www.patrick-wied.at/static/heatmapjs/docs.html
+    //参数说明如下:
+    /* visible 热力图是否显示,默认为true
+     * opacity 热力图的透明度,分别对应heatmap.js的minOpacity和maxOpacity
+     * radius 势力图的每个点的半径大小
+     * gradient  {JSON} 热力图的渐变区间 . gradient如下所示
+     *	{
+     .2:'rgb(0, 255, 255)',
+     .5:'rgb(0, 110, 255)',
+     .8:'rgb(100, 0, 255)'
+     }
+     其中 key 表示插值的位置, 0-1
+     value 为颜色值
+     */
+    var heatmap;
+    map.plugin(["AMap.Heatmap"], function () {
+        //初始化heatmap对象
+        heatmap = new AMap.Heatmap(map, {
+            radius: 25, //给定半径
+            opacity: [0, 0.8]
+            /*,
+            gradient:{
+                0.5: 'blue',
+                0.65: 'rgb(117,211,248)',
+                0.7: 'rgb(0, 255, 0)',
+                0.9: '#ffea00',
+                1.0: 'red'
+            }
+             */
+        });
+        //设置数据集：该数据为北京部分“公园”数据
+
+
+        heatmap.setDataSet({
+            data: points,
+            max: 100
+        });
+    });
+
+    //判断浏览区是否支持canvas
+    function isSupportCanvas() {
+        var elem = document.createElement('canvas');
+        return !!(elem.getContext && elem.getContext('2d'));
+    }
+</script>
+</body>
+</html>

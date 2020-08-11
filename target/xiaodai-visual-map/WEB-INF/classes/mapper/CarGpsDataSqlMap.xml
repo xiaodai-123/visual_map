@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+    PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+    "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.xiaodai.visual.map.service.mapper.CarGpsDataDao">
+
+    <resultMap id="BaseResultMap" type="com.xiaodai.visual.map.service.mapper.po.CarGpsData">
+        <result property="id" column="ID"/>
+        <result property="licensePlateNo" column="LICENSE_PLATE_NO"/>
+        <result property="gpsTimeStart" column="GPS_TIME_START"/>
+        <result property="gpsTimeEnd" column="GPS_TIME_END"/>
+        <result property="longitude" column="LONGITUDE"/>
+        <result property="latitude" column="LATITUDE"/>
+        <result property="height" column="HEIGHT"/>
+        <result property="speed" column="SPEED"/>
+        <result property="direction" column="DIRECTION"/>
+        <result property="carStatus" column="CAR_STATUS"/>
+        <result property="dataStatus" column="DATA_STATUS"/>
+    </resultMap>
+
+    <sql id="Base_Column_List">
+        ID ,LICENSE_PLATE_NO ,GPS_TIME_START ,GPS_TIME_END ,LONGITUDE ,LATITUDE ,HEIGHT ,SPEED ,DIRECTION ,CAR_STATUS ,DATA_STATUS 
+    </sql>
+
+    <select id="selectByQuery" parameterType="Object" resultMap="BaseResultMap">
+        SELECT
+        <include refid="Base_Column_List" />
+        FROM car_gps_data
+        where GPS_TIME_START between #{startTime} and #{endTime}
+        limit #{pageSize}
+    </select>
+
+</mapper>

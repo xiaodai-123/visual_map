@@ -12,12 +12,12 @@ public class DataInitUtil {
     /**
      * 源文件
      */
-    private static String filePath = "/Users/xiaozhameng/test/taxi_GPS.csv";
+    private static String filePath = "D:\\taxi_GPS.csv";
 
     /**
      * 目标SQL文件
      */
-    private static String SQLFile = "/Users/xiaozhameng/test/mysql.sql";
+    private static String SQLFile = "D:\\mysql.sql";
 
 
     /**
